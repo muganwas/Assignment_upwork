@@ -34,7 +34,7 @@
 		<div class="column left">
 			<div class="card1">
 				<h2>Promotions</h2>
-				<img src="./images/promotion.png" style="height:100%" width="100%" />
+				<img src="./images/promotion.png" style="height:'100%' width='100%'" />
 			</div>
 		</div>
 		<div class="column middle">
