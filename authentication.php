@@ -11,6 +11,7 @@
             $name = $_POST['name'];
             $password= $_POST['password'];
             $cPassword=$_POST['cPassword'];
+            //check if variables are not null
             if($name != null && $password != null && $cPassword != null){
                 $feedback1 = $main->signupUser($name, $password, $cPassword);
             }else{
@@ -60,6 +61,7 @@
             <?php if(isset($feedback1)){ echo $feedback1; } ?>
             <?php 
             if(!isset($feedback1)){
+            //show different forms for logins and signup 
             if(isset($noneUser) && $noneUser == true){?>
             <form method="post" action="<?php echo $_SERVER['PHP_SELF'].'?noneUser=true'; ?>">
             <div class="col-50">

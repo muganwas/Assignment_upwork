@@ -11,7 +11,6 @@ class assignment_19{
             echo '<div class="tableContainer">';
             echo '<table>';
             while($rez= $connect->fetch_array(MYSQLI_ASSOC)){
-                //var_dump($rez['id']);
                 
                     echo '<tr>
                         <th> BOOK ID </th>
@@ -103,7 +102,7 @@ class assignment_19{
                 $connect1 = $mysqli->query(($query1));
                 $count = $connect1->fetch_row();
                 if($count[0] > 0){
-            
+                    //use of prepared statement for security reasons
                     if($name != null && $bookId != null && $contact != null && $email != null && $address != null && $city != null && $state != null && $postalCode != null){
                         $query = "INSERT INTO `orders` VALUES('',?,?,?,?,?,?,?,?)";
                         $connect = $mysqli->prepare($query);
@@ -171,6 +170,7 @@ class assignment_19{
     }
 
     public function logout(){
+        //unset the user session 
         unset($_SESSION['user_assignment1']);
         session_destroy();
     }
