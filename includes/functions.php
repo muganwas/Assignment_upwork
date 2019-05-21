@@ -39,6 +39,7 @@ class assignment_19{
         require('connection.php');
         if($mysqli = new mysqli($server, $username, $password, $database)){
             if($querr != null){
+                //checking for similar Ids and product name not the exact key words
                 $query = "SELECT * FROM `inventory` WHERE `id` LIKE '%".$querr."%' || `product` LIKE '%".$querr."%' ORDER BY `id` ASC";
                 $query1 = "SELECT count(id) FROM `inventory` WHERE `id` LIKE '%".$querr."%' || `product` LIKE '%".$querr."%'";
                 $connect = $mysqli->query($query);
@@ -49,7 +50,6 @@ class assignment_19{
                     echo '<h3> Search Results</h3>';
                     echo '<table class="table">';
                     while($rez= $connect->fetch_array(MYSQLI_ASSOC)){
-                        //var_dump($rez['id']);
                         echo '<tr>
                             <th> BOOK ID </th>
                             <th> Product </th>
