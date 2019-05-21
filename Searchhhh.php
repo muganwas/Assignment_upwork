@@ -33,15 +33,8 @@ if(isset($_POST['serial']) || isset($_POST['title'])){
 		<h1>JJ BOOKS</h1>
 	</div>
 
-	<div class="topnav">
-
-		<a href="index.php">Home</a>
-		<a href="table.php">Books</a>
-		<a href="Week5.php">Order</a>
-		<a href="fdf.php">FAQ</a>
-		<a href="Contact.php">Contact</a>
-		<a href="Searchhhh.php" style="float:right">Search</a>
-	</div>
+	<?php include('includes/menu.php') ?>
+	
 	<fieldset>
 		<legend> Search here</legend>
 		<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
@@ -54,11 +47,9 @@ if(isset($_POST['serial']) || isset($_POST['title'])){
 					<input type="text" id="title" name="title" value="<?php if(isset($_POST['serial']))echo $_POST['title']; ?>" placeholder="Title of the book">
 				</div>
 			</div>
-			<div class="row">
 				<div class="card2">
-					<input type="submit" value="Search" style="margin-left:500px">
+					<input type="submit" value="Search">
 				</div>
-			</div>
 		</form>
 	</fieldset>
 	<div class = "results">

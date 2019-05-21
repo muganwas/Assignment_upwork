@@ -21,13 +21,7 @@
 
 	</div>
 
-	<div class="topnav">
-		<a href="index.php">Home</a>
-		<a href="table.php">Books</a>
-		<a href="Week5.php">Order</a>
-		<a href="fdf.php">FAQ</a>
-		<a href="Contact.php">Contact</a>
-		<a href="Searchhhh.php" style="float:right">Search</a>
+	<?php include('includes/menu.php') ?>
 
 	</div>
 	<div class="row">
@@ -40,6 +34,7 @@
 		<div class="column middle">
 
 			<div class="card2">
+				<div class="linkConatiner"><a href="./authentication.php">Login to order now!</a></div>
 				<h2>Important Notice</h2>
 				<img src="./images/notice.png" height="50%" width="50%" />
 				<br>This is to inform all the customers that we are very sorry that we are out of stock for the <b> CRIME AND PUNISHMENT </b><br>

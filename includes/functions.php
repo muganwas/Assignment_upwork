@@ -1,4 +1,7 @@
 <?php
+if(session_status() == PHP_SESSION_NONE){
+    session_start();
+}
 class assignment_19{
     public function fetch_books(){
         require('connection.php');
@@ -74,5 +77,101 @@ class assignment_19{
             }            
         }
     }
+
+    public function submitContactForm($name, $country, $message){
+        require('connection.php');
+        if($mysqli = new mysqli($server, $username, $password, $database)){
+            if($name != null && $country != null && $message != null){
+                $query = "INSERT INTO `contact` VALUES('',?,?,?)";
+                $connect = $mysqli->prepare($query);
+                $connect->bind_param("sss", $name, $country, $message);
+                if($connect->execute()){
+                    return '<div class="feedback">Message Sent, thank you.</div>';                   
+                }else{
+                    return '<div class="feedback">There was an error please try again later.</div>';
+                }
+            }
+        }
+
+    }
+
+    public function submitBookOrder($bookId, $name, $contact, $email, $address, $city, $state, $postalCode){
+        require('connection.php');
+        if($mysqli = new mysqli($server, $username, $password, $database)){
+            if($bookId){
+                $query1 = "SELECT count(id) FROM `inventory` WHERE `id` = '".$bookId."'";
+                $connect1 = $mysqli->query(($query1));
+                $count = $connect1->fetch_row();
+                if($count[0] > 0){
+            
+                    if($name != null && $bookId != null && $contact != null && $email != null && $address != null && $city != null && $state != null && $postalCode != null){
+                        $query = "INSERT INTO `orders` VALUES('',?,?,?,?,?,?,?,?)";
+                        $connect = $mysqli->prepare($query);
+                        $connect->bind_param("ssssssss", $bookId, $name, $contact, $email, $address, $city, $state, $postalCode);
+                        if($connect->execute()){
+                            return '<div class="feedback">Your order has been submited, thank you.</div>';                   
+                        }else{
+                            return '<div class="feedback">There was an error please try again later.</div>';
+                        }
+                    }
+
+                }else{
+                    return '<div class="feedback">The book you are trying to order is not in our inventory.</div>';
+                }
+            }
+        }
+
+    }
+
+    public function signupUser($name, $pass, $conPass){
+        require('connection.php');
+        if($mysqli = new mysqli($server, $username, $password, $database)){
+            if($name != null){
+                $query1 = "SELECT count(id) FROM `users` WHERE `name` = '".$name."'";
+                $connect1 = $mysqli->query(($query1));
+                $count = $connect1->fetch_row();
+                if($count[0] == 0){
+                    if($pass == $conPass){
+                        if($name != null && $pass != null && $conPass != null ){
+                            $pass = md5($pass);
+                            $query = "INSERT INTO `users` VALUES('',?,?)";
+                            $connect = $mysqli->prepare($query);
+                            $connect->bind_param("ss", $name, $pass);
+                            if($connect->execute()){
+                                return '<div class="feedback">You signup successfully.</div>';                   
+                            }else{
+                                return '<div class="feedback">There was an error please try again later.</div>';
+                            }
+                        }
+                    }else{
+                        return '<div class="feedback">Passwords do not match.</div>';
+                    }
+                }else{
+                    return '<div class="feedback">Username already exists.</div>';
+                }
+            }
+        }
+    }
+
+    public function loginUser($name, $pass){
+        require('connection.php');
+        if($mysqli = new mysqli($server, $username, $password, $database)){
+            if($name != null){
+                $pass = md5($pass);
+                $query1 = "SELECT count(id) FROM `users` WHERE `name` = '".$name."' AND `password` = '".$pass."'";
+                $connect1 = $mysqli->query(($query1));
+                $count = $connect1->fetch_row();
+                if($count[0] == 1){
+                    return "good";
+                }else{
+                    return '<div class="feedback">Something went wrong, please try again.</div>';
+                }
+            }
+        }
+    }
+
+    public function logout(){
+        unset($_SESSION['user_assignment1']);
+        session_destroy();
+    }
 }
-?>

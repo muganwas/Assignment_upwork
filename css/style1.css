@@ -28,6 +28,7 @@ body {
 }
 
 .footer {
+    display: block;
     padding: 10px;
     text-align: center;
 }
@@ -119,7 +120,8 @@ p.c {
     padding: 0 16px;
 }
 
-input[type=text] {
+input,
+textarea {
     width: 100%;
     margin-bottom: 20px;
     padding: 12px;
@@ -148,9 +150,8 @@ label {
     padding: 20px;
     margin-top: 20px;
     width: 100%;
-    color: red;
-    font-weight: lighter;
-    font-style: oblique;
+    color: black;
+    font-weight: bold;
     font-size: medium;
 }
 
@@ -192,13 +193,20 @@ th {
 }
 
 .feedback {
-    padding: 10px;
     color: red;
     display: block;
+    padding: 10px;
+    background: '#cccccc';
+    margin: 3px 10px;
+    text-transform: capitalize;
     font-size: 16px;
 }
 
 .tableContainer {
     display: block;
     padding: 10px 40px;
+}
+
+.linkContainer {
+    padding: 10px;
 }

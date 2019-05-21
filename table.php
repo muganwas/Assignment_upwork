@@ -22,14 +22,7 @@
 
 	</div>
 
-	<div class="topnav">
-		<a href="index.php">Home</a>
-		<a href="table.php">Books</a>
-		<a href="Week5.php">Order</a>
-		<a href="fdf.php">FAQ</a>
-		<a href="Contact.php">Contact</a>
-		<a href="Searchhhh.php" style="float:right">Search</a>
-	</div>
+	<?php include('includes/menu.php') ?>
 
 	<?php $main->fetch_books(); ?>
 
