@@ -10,7 +10,7 @@
 <div class="topnav">
 		<a href="index.php">Home</a>
 		<a href="table.php">Books</a>
-<?php if(isset($loggedIn)){?><a href="Week5.php">Order</a><?php } ?>
+<?php if(isset($loggedIn)){?><a href="week5.php">Order</a><?php } ?>
 		<a href="fdf.php">FAQ</a>
 		<a href="Contact.php">Contact</a>
 		<a href="Searchhhh.php" style="float:right">Search</a>

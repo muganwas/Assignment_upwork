@@ -1,3 +1,7 @@
+<?php
+	require('includes/functions.php');
+	$main = new assignment_19;
+?>
 <!DOCTYPE html>
 <html>
 
